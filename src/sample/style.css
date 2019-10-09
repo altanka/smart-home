@@ -1,0 +1,25 @@
+#searchButton {
+    -fx-background-color: darkblue;
+    -fx-background-radius: 100em;
+    -fx-min-width: 60px;
+    -fx-min-height: 60px;
+    -fx-max-width: 130px;
+    -fx-max-height: 60px;
+}
+
+#searchButton:disabled {
+    -fx-background-color: darkgreen;
+    -fx-opacity: 1;
+}
+#searchButton:focused {
+    -fx-background-color: linear-gradient(blue, red, green);
+}
+#intervalCB.context-menu { -fx-background-color: black; }
+#intervalCB.menu-item:focused { -fx-background-color: orange; }
+#intervalCB.menu-item > .label { -fx-text-fill: black; }
+#intervalCB.menu-item:focused > .label { -fx-text-fill: black; }
+#intervalCB {
+    -fx-background-color: linear-gradient(blue, blue, coral);
+    -fx-mark-color: orange; // arrow color
+}
+#intervalCB > .label { -fx-text-fill: white; }

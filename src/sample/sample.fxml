@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="logo1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin>
+            </ImageView>
+            <Label alignment="CENTER" prefHeight="105.0" prefWidth="1368.0" text="Akıllı Elektrik Dağıtım Sistemi">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="71.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="logo2" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets right="25.0" />
+               </HBox.margin>
+            </ImageView>
+         </children></HBox>
+   </top>
+   <bottom>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <left>
+      <VBox alignment="TOP_CENTER" prefHeight="564.0" prefWidth="223.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="searchLabel" text="Bağlanmak için basın">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Button fx:id="searchButton" mnemonicParsing="false" onMouseClicked="#searchBluetooth">
+               <VBox.margin>
+                  <Insets bottom="150.0" top="10.0" />
+               </VBox.margin></Button>
+            <Label text="Zaman aralığını seçin" />
+            <ChoiceBox fx:id="intervalCB" prefHeight="31.0" prefWidth="187.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </ChoiceBox>
+         </children></VBox>
+   </left>
+   <right>
+      <VBox alignment="TOP_CENTER" prefHeight="564.0" prefWidth="227.0" spacing="2.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Fiyatlandırma" />
+            <Label fx:id="priceLabel" text="1 kWh için 21.8 kr" />
+            <Separator prefWidth="200.0" />
+            <Label text="Ev 1" />
+            <Label text="Anlık Tüketim" />
+            <Label fx:id="home1PowerLabel" text="0 kW" />
+            <Label text="Toplam Fiyat" />
+            <Label fx:id="home1PriceLabel" text="0 TL" />
+            <Separator layoutX="10.0" layoutY="52.0" prefWidth="200.0" />
+            <Label layoutX="112.0" layoutY="55.0" text="Ev 2" />
+            <Label layoutX="78.0" layoutY="76.0" text="Anlık Tüketim" />
+            <Label fx:id="home2PowerLabel" layoutX="103.0" layoutY="97.0" text="0 kW" />
+            <Label layoutX="81.0" layoutY="118.0" text="Toplam Fiyat" />
+            <Label fx:id="home2PriceLabel" layoutX="106.0" layoutY="139.0" text="0 TL" />
+            <Separator layoutX="10.0" layoutY="52.0" prefWidth="200.0" />
+            <Label layoutX="110.0" layoutY="163.0" text="Ev 3" />
+            <Label layoutX="78.0" layoutY="184.0" text="Anlık Tüketim" />
+            <Label fx:id="home3PowerLabel" layoutX="103.0" layoutY="205.0" text="0 kW" />
+            <Label layoutX="81.0" layoutY="226.0" text="Toplam Fiyat" />
+            <Label fx:id="home3PriceLabel" layoutX="106.0" layoutY="247.0" text="0 TL" />
+            <Separator layoutX="10.0" layoutY="268.0" prefWidth="200.0" />
+            <Label layoutX="110.0" layoutY="271.0" text="Ev 4" />
+            <Label layoutX="78.0" layoutY="292.0" text="Anlık Tüketim" />
+            <Label fx:id="home4PowerLabel" layoutX="103.0" layoutY="313.0" text="0 kW" />
+            <Label layoutX="81.0" layoutY="334.0" text="Toplam Fiyat" />
+            <Label fx:id="home4PriceLabel" layoutX="106.0" layoutY="355.0" text="0 TL" />
+         </children></VBox>
+   </right>
+   <center>
+      <GridPane gridLinesVisible="true" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="sendButton" mnemonicParsing="false" onMouseClicked="#sendCommand" text="Send" GridPane.columnIndex="1" />
+            <TextField fx:id="commandTF" />
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>
