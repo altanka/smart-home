@@ -18,6 +18,30 @@ public class Controller {
     @FXML
     private TextField commandTF;
     @FXML
+    private TextField resTF1;
+    @FXML
+    private TextField resTF2;
+    @FXML
+    private TextField resTF3;
+    @FXML
+    private TextField resTF4;
+    @FXML
+    private TextField timeTF1;
+    @FXML
+    private TextField timeTF2;
+    @FXML
+    private TextField timeTF3;
+    @FXML
+    private TextField timeTF4;
+    @FXML
+    private CheckBox resCB1;
+    @FXML
+    private CheckBox resCB2;
+    @FXML
+    private CheckBox resCB3;
+    @FXML
+    private CheckBox resCB4;
+    @FXML
     private Button searchButton;
     @FXML
     private Button sendButton;
@@ -71,10 +95,11 @@ public class Controller {
             }
         });
 
-        client = SPPClient.getInstance();
+        client = SPPClient.getInstance(new CheckBox[]{resCB1, resCB2, resCB3, resCB4});
         bluetoothRunnable = client::read;
 
     }
+
 
     @FXML
     public void searchBluetooth() {
@@ -87,7 +112,19 @@ public class Controller {
 
     @FXML
     public void sendCommand(){
-        client.write(commandTF.getText());
+        String command = resTF1.getText() + "#";
+        command += timeTF1.getText() + "#";
+        command += "1#";
+        command += resTF2.getText() + "#";
+        command += timeTF2.getText() + "#";
+        command += "1#";
+        command += resTF3.getText() + "#";
+        command += timeTF3.getText() + "#";
+        command += "1#";
+        command += resTF4.getText() + "#";
+        command += timeTF4.getText() + "#";
+        command += "1";
+        client.write(command);
     }
 
 

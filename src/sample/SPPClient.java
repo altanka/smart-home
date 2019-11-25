@@ -1,6 +1,8 @@
 package sample;
 
 import com.intel.bluetooth.RemoteDeviceHelper;
+import javafx.application.Platform;
+import javafx.scene.control.CheckBox;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -40,11 +42,14 @@ import java.util.concurrent.TimeUnit;
 public class SPPClient implements DiscoveryListener {
 
     private static SPPClient instance;
+    private CheckBox resCB1;
+    private CheckBox resCB2;
+    private CheckBox resCB3;
+    private CheckBox resCB4;
 
-
-    public static SPPClient getInstance() {
+    public static SPPClient getInstance(CheckBox[] checkBoxes) {
         if (instance == null) {
-            instance = new SPPClient();
+            instance = new SPPClient(checkBoxes);
         }
         return instance;
     }
@@ -88,10 +93,14 @@ public class SPPClient implements DiscoveryListener {
     /**
      * Create the SPPClient and retrieve the {@link DiscoveryAgent}.
      */
-    private SPPClient() {
+    private SPPClient(CheckBox[] checkBoxes) {
         try {
             LocalDevice localDevice = LocalDevice.getLocalDevice();
             agent = localDevice.getDiscoveryAgent();
+            resCB1 = checkBoxes[0];
+            resCB2 = checkBoxes[1];
+            resCB3 = checkBoxes[2];
+            resCB4 = checkBoxes[3];
         } catch (BluetoothStateException e) {
             System.out.println("Error while retrieving discovery agent " + e);
         }
@@ -133,6 +142,7 @@ public class SPPClient implements DiscoveryListener {
                     e.printStackTrace();
                 }
             }
+
             System.out.println("Ready");
 
 
@@ -281,6 +291,11 @@ public class SPPClient implements DiscoveryListener {
     public void read(){
         try {
             System.out.println("Command from bluetooth device: " + bufferedReader.readLine());
+            String[] states = bufferedReader.readLine().substring(1).replace("\n", "").split("#");
+            Platform.runLater(()->this.resCB1.setSelected(states[0].equals("1")));;
+            Platform.runLater(()->this.resCB2.setSelected(states[1].equals("1")));;
+            Platform.runLater(()->this.resCB3.setSelected(states[2].equals("1")));;
+            Platform.runLater(()->this.resCB4.setSelected(states[3].equals("1")));;
         } catch (IOException e) {
             e.printStackTrace();
         }

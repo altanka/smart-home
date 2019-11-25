@@ -54,11 +54,17 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </ChoiceBox>
+            <Button fx:id="sendButton" mnemonicParsing="false" onAction="#sendCommand" text="Button">
+               <VBox.margin>
+                  <Insets top="60.0" />
+               </VBox.margin>
+            </Button>
          </children></VBox>
    </left>
    <right>
-      <VBox alignment="TOP_CENTER" prefHeight="564.0" prefWidth="227.0" spacing="2.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="564.0" prefWidth="227.0" spacing="1.5" BorderPane.alignment="CENTER">
          <children>
+            <Separator prefWidth="200.0" />
             <Label text="Fiyatlandırma" />
             <Label fx:id="priceLabel" text="1 kWh için 21.8 kr" />
             <Separator prefWidth="200.0" />
@@ -85,6 +91,7 @@
             <Label fx:id="home4PowerLabel" layoutX="103.0" layoutY="313.0" text="0 kW" />
             <Label layoutX="81.0" layoutY="334.0" text="Toplam Fiyat" />
             <Label fx:id="home4PriceLabel" layoutX="106.0" layoutY="355.0" text="0 TL" />
+            <Separator prefWidth="200.0" />
          </children></VBox>
    </right>
    <center>
@@ -98,8 +105,50 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="sendButton" mnemonicParsing="false" onMouseClicked="#sendCommand" text="Send" GridPane.columnIndex="1" />
-            <TextField fx:id="commandTF" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Label text="Direnç Değeri" />
+                        <TextField fx:id="resTF1" />
+                        <TextField fx:id="resTF2" layoutX="10.0" layoutY="10.0" />
+                        <TextField fx:id="resTF3" layoutX="10.0" layoutY="41.0" />
+                        <TextField fx:id="resTF4" layoutX="10.0" layoutY="72.0" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Label text="Çalışma Süresi" />
+                        <TextField fx:id="timeTF1" />
+                        <TextField fx:id="timeTF2" />
+                        <TextField fx:id="timeTF3" />
+                        <TextField fx:id="timeTF4" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                     <children>
+                        <Label text="Aktif">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <CheckBox fx:id="resCB1" mnemonicParsing="false" prefHeight="31.0" />
+                        <CheckBox fx:id="resCB2" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="31.0" />
+                        <CheckBox fx:id="resCB3" layoutX="10.0" layoutY="31.0" mnemonicParsing="false" prefHeight="31.0" />
+                        <CheckBox fx:id="resCB4" layoutX="10.0" layoutY="52.0" mnemonicParsing="false" prefHeight="31.0" />
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="60.0" />
+               </padding>
+            </HBox>
          </children>
       </GridPane>
    </center>
