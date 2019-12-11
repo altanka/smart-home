@@ -2,7 +2,8 @@ const int RES_PINS[] = {4, 5, 6, 7};
 char veri;
 String command;
 int resistors[] = {0, 0, 0, 0};
-int intervals[] = {0, 0, 0, 0};
+int startTimes[] = {0, 0, 0, 0};
+int endTimes[] = {0, 0, 0, 0};
 int states[] = {0, 0, 0, 0};
 int loadStatus[] = {0, 0, 0, 0};
 float loadPower[] = {0, 0, 0, 0};
@@ -51,30 +52,36 @@ void loop() {
   //Serial.println(powerCommand);
   
   for(int i = 0; i < 4; i++){
-    digitalWrite(RES_PINS[i], !states[i]);
-    if(intervals[i] <= millis() - startTime){
+    if(endTimes[i] >= (millis() - startTime) && startTimes[i] <= (millis() - startTime)){
+      states[i] = 1;
+    } else {
       states[i] = 0;
     }
+    digitalWrite(RES_PINS[i], !states[i]);
   }
 }
 
 void executeCommand(String command) {
 
   resistors[0] = getValue(command, '#', 0).toInt();
-  intervals[0] = getValue(command, '#', 1).toInt();
-  states[0] = getValue(command, '#', 2).toInt();
+  startTimes[0] = getValue(command, '#', 1).toInt();
+  endTimes[0] = getValue(command, '#', 2).toInt();
+  states[0] = getValue(command, '#', 3).toInt();
 
-  resistors[1] = getValue(command, '#', 3).toInt();
-  intervals[1] = getValue(command, '#', 4).toInt();
-  states[1] = getValue(command, '#', 5).toInt();
+  resistors[1] = getValue(command, '#', 4).toInt();
+  startTimes[1] = getValue(command, '#', 5).toInt();
+  endTimes[1] = getValue(command, '#', 6).toInt();
+  states[1] = getValue(command, '#', 7).toInt();
 
-  resistors[2] = getValue(command, '#', 6).toInt();
-  intervals[2] = getValue(command, '#', 7).toInt();
-  states[2] = getValue(command, '#', 8).toInt();
+  resistors[2] = getValue(command, '#', 8).toInt();
+  startTimes[2] = getValue(command, '#', 9).toInt();
+  endTimes[2] = getValue(command, '#', 10).toInt();
+  states[2] = getValue(command, '#', 11).toInt();
 
-  resistors[3] = getValue(command, '#', 9).toInt();
-  intervals[3] = getValue(command, '#', 10).toInt();
-  states[3] = getValue(command, '#', 11).toInt();
+  resistors[3] = getValue(command, '#', 12).toInt();
+  startTimes[3] = getValue(command, '#', 13).toInt();
+  endTimes[3] = getValue(command, '#', 14).toInt();
+  states[3] = getValue(command, '#', 15).toInt();
 
   startTime = millis();
 

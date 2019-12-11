@@ -149,6 +149,8 @@
                   <Insets left="60.0" />
                </padding>
             </HBox>
+            <VBox fx:id="chartVB" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" />
+            <VBox fx:id="costVB" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </center>

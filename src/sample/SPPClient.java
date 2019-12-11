@@ -296,7 +296,7 @@ public class SPPClient implements DiscoveryListener {
             Platform.runLater(()->this.resCB2.setSelected(states[1].equals("1")));;
             Platform.runLater(()->this.resCB3.setSelected(states[2].equals("1")));;
             Platform.runLater(()->this.resCB4.setSelected(states[3].equals("1")));;
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
